@@ -31,10 +31,11 @@ class APIService: NSObject {
     enum EndPoints {
         
         var baseURL: URL { return URL(string: "https://api.themoviedb.org/")! }
-        var baseURLImage: URL {return URL(string: "https://image.tmdb.org/t/p/w500/")!}
+        var baseURLImage: URL {return URL(string: "https://image.tmdb.org/t/p/w500")!}
         
         case moviesList
         case movieDetail(idMovie:String)
+        case movieImage(path:String)
         
         var url : URL {
             switch self {
@@ -42,6 +43,8 @@ class APIService: NSObject {
                 return baseURL.appendingPathComponent("4/list/1")
             case .movieDetail(let idMovie):
                 return baseURL.appendingPathComponent("3/movie/\(idMovie)")
+            case .movieImage(let path):
+                return baseURLImage.appendingPathComponent(path)
             }
         }
     }
@@ -49,7 +52,7 @@ class APIService: NSObject {
     let token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3ODQ2OTA2ZjI0MzYxYTcxM2JhMmNjNGQ4NTdhY2RlNSIsInN1YiI6IjVjMGIyZmE3MGUwYTI2MzhiODA2MjVmZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.faWR0dR6ai4vrnJEK20Tj9oziIUdQfT6O5HqBBbchak"
     let session = URLSession.shared
     
-    func callApi<T:Decodable>(url: URL, param: inout[String:String], httpMethod: HTTPMethod, complete: @escaping (APIServiceResult<T>) -> Void) {
+     func callApi<T:Decodable>(url: URL, param: inout[String:String], httpMethod: HTTPMethod, complete: @escaping (APIServiceResult<T>) -> Void) {
         
         var request = URLRequest(url: url)
         param["api_key"] = apiKey
@@ -83,8 +86,8 @@ class APIService: NSObject {
         
     }
     
-    func downloadImage(url:URL, complete: @escaping (APIServiceResult<Data>) -> Void){
-        
+    func downloadImage(path:String, complete: @escaping (APIServiceResult<Data>) -> Void){
+        let url = APIService.EndPoints.movieImage(path: path).url
         let request = URLRequest(url: url)
         session.dataTask(with: request) { (responseData, _, error) in
             guard error == nil else {

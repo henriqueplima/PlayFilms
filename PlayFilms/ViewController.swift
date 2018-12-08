@@ -12,7 +12,7 @@ struct Teste : Decodable {
     var seila : String
 }
 
-class ViewController: UIViewController {
+class ViewController: UIViewController  {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +20,7 @@ class ViewController: UIViewController {
                      "sor_by":"vote_avarage.desc"]
         var api = APIService()
         
-        api.callApi(url: APIService.EndPoints.moviesList.url, param: &param, httpMethod: .get) { (response:APIServiceResult<MoveListResponse>) in
+        api.callApi(url: APIService.EndPoints.moviesList.url, param: &param, httpMethod: .get) { (response:APIServiceResult<MovieListResponse>) in
             debugPrint("sei la")
         }
         // Do any additional setup after loading the view, typically from a nib.
