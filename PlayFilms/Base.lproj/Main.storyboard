@@ -95,6 +95,7 @@
                                         <constraint firstItem="KlW-dC-ogl" firstAttribute="centerX" secondItem="Isn-NG-gwa" secondAttribute="centerX" id="unh-qW-njb"/>
                                     </constraints>
                                     <connections>
+                                        <outlet property="lblDescription" destination="0Wt-0Q-ygL" id="SAA-kA-0d7"/>
                                         <outlet property="refreshControlIndicator" destination="KlW-dC-ogl" id="2E7-J2-JXG"/>
                                     </connections>
                                 </collectionReusableView>

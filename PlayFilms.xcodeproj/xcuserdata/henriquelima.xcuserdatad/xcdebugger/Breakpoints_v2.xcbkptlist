@@ -19,5 +19,117 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PlayFilms/MovieList/MovieListViewModel.swift"
+            timestampString = "566092342.097641"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "fetchMovies(complete:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PlayFilms/Synchronize/Synchronizer.swift"
+            timestampString = "566092342.09808"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "syncCoreData(moviesList:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PlayFilms/MovieList/MovieListViewModel.swift"
+            timestampString = "566092342.098141"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "fetchMovies(complete:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (PlayFilms.APIServiceResult&lt;PlayFilms.MovieListResponse&gt;) -&gt; () in PlayFilms.MovieListViewModel.fetchMovies(complete: (Swift.Array&lt;PlayFilms.Movie&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PlayFilms"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/henriquelima/Documents/Desenvolvimento%20IOS/Examples/PlayFilms/PlayFilms/MovieList/MovieListViewModel.swift"
+                  timestampString = "566092342.193024"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "971">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (PlayFilms.APIServiceResult&lt;Swift.Array&lt;PlayFilms.Movie&gt;&gt;) -&gt; () in closure #1 (PlayFilms.APIServiceResult&lt;PlayFilms.MovieListResponse&gt;) -&gt; () in PlayFilms.MovieListViewModel.fetchMovies(complete: (Swift.Array&lt;PlayFilms.Movie&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PlayFilms"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/henriquelima/Documents/Desenvolvimento%20IOS/Examples/PlayFilms/PlayFilms/MovieList/MovieListViewModel.swift"
+                  timestampString = "566092342.195622"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "47">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PlayFilms/Synchronize/Synchronizer.swift"
+            timestampString = "566092342.098405"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "allMovies(complete:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PlayFilms/Synchronize/Synchronizer.swift"
+            timestampString = "566092342.098461"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "allMovies(complete:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

@@ -24,21 +24,36 @@ enum SortMovie : String {
 class MovieListViewModel: NSObject {
     
     var page : Int = 1
+    var section : Int = 1
     var apiService = APIService()
+    var synhronizer = Synchronizer()
 
     func fetchMovies(complete :@escaping ([Movie]) -> Void) {
         
-        apiService.callApi(url: APIService.EndPoints.moviesList(page: "\(page)", sort: .tileAsc).url, httpMethod: .get) { (response :APIServiceResult<MovieListResponse>) in
+        apiService.callApi(url: APIService.EndPoints.moviesList(page: "\(page)",section: "\(section)", sort: .tileAsc).url, httpMethod: .get) { (response :APIServiceResult<MovieListResponse>) in
             
             switch response {
             case .Success(let moviesResponse):
                 complete(moviesResponse.results)
-                self.page += 1
-            case .Failure():
-                debugPrint("falha aqui")
+                if self.page >= moviesResponse.totalPage {
+                    self.section += 1
+                    self.page = 1
+                } else {
+                    self.page += 1
+                }
+                
+                self.synhronizer.syncCoreData(moviesList: moviesResponse.results)
+            case .Failure(let error):
+                self.synhronizer.allMovies(complete: { (result:APIServiceResult<[Movie]>) in
+                    switch result {
+                        case .Success(let movieList):
+                            complete(movieList)
+                        case .Failure(let error):
+                             debugPrint("falha aqui \(error)")
+                    }
+                })
+                debugPrint("falha aqui \(error)")
             }
-
-            
         }
         
     }
@@ -46,21 +61,13 @@ class MovieListViewModel: NSObject {
     func downloadCoverMovie(path:String, complete: @escaping (Data) -> Void){
         
         apiService.downloadImage(path: path) { (response:APIServiceResult<Data>) in
-            switch response {
-                case .Success(let imageData):
-                    complete(imageData)
-                case .Failure():
-                    debugPrint("falaha image")
+            
+            if response.isSuccess, let imgData = response.value {
+                complete(imgData)
             }
         }
         
     }
     
-//    func storeMovies(movie:Movie) {
-//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//        let context = appDelegate.persistentContainer.viewContext
-//        let entity = NSEntityDescription.entity(forEntityName: "Movie", in: context)
-//        let newMovie = NSManageObject()
-//    }
     
 }

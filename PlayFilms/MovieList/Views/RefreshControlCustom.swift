@@ -11,6 +11,8 @@ import UIKit
 class RefreshControlCustom: UICollectionReusableView {
     
     @IBOutlet weak var refreshControlIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var lblDescription : UILabel!
+    
     var isAnimatingFinal:Bool = false
     var currentTransform:CGAffineTransform?
     
@@ -41,11 +43,13 @@ class RefreshControlCustom: UICollectionReusableView {
     func startAnimate() {
         self.isAnimatingFinal = true
         self.refreshControlIndicator?.startAnimating()
+        self.lblDescription.isHidden = false
     }
     
     func stopAnimate() {
         self.isAnimatingFinal = false
         self.refreshControlIndicator?.stopAnimating()
+        self.lblDescription.isHidden = true
     }
     
     //final animation to display loading

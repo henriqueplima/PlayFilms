@@ -41,6 +41,16 @@ import UIKit
             case voteAvarege = "vote_average"
         }
         
+        init(title : String, id:Int, overview:String, release:String, path:String, avarage:Float, coverData:Data?) {
+            self.title = title
+            self.id = id
+            self.overview = overview
+            self.releaseDate = release
+            self.coverPath = path
+            self.coverData = coverData
+            self.voteAvarege = avarage
+        }
+        
     }
     
     struct MovieListResponse : Decodable {
