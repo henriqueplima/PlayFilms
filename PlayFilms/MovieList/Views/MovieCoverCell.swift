@@ -18,8 +18,7 @@ class MovieCoverCell: UICollectionViewCell {
     func setMovie(_ movie:Movie){
         self.lblTitle.text = movie.title
         if let imageData = movie.coverData {
-            var newImage = UIImage(data: imageData)
-            self.imgCover.image = newImage
+            self.imgCover.image = UIImage(data: imageData)
         }
     }
     

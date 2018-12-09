@@ -7,26 +7,37 @@
 //
 
 import UIKit
+import CoreData
+
+enum SortMovie : String {
+    case tileAsc = "title.asc"
+    
+    var valueString : String {
+        switch self {
+        case .tileAsc:
+            return self.rawValue
+        }
+    }
+    
+}
 
 class MovieListViewModel: NSObject {
     
     var page : Int = 1
     var apiService = APIService()
 
-    func fetchMovies(complete :@escaping (MovieListResponse) -> Void) {
+    func fetchMovies(complete :@escaping ([Movie]) -> Void) {
         
-        var param = ["page":"\(page)",
-                     "sort_by":"title.asc"]
-        
-        apiService.callApi(url: APIService.EndPoints.moviesList.url, param: &param, httpMethod: .get) { (response : APIServiceResult<MovieListResponse>) in
+        apiService.callApi(url: APIService.EndPoints.moviesList(page: "\(page)", sort: .tileAsc).url, httpMethod: .get) { (response :APIServiceResult<MovieListResponse>) in
             
             switch response {
-                case .Success(let moviesResponse):
-                    complete(moviesResponse)
-                    self.page += 1
-                case .Failure():
-                    debugPrint("falha aqui")
+            case .Success(let moviesResponse):
+                complete(moviesResponse.results)
+                self.page += 1
+            case .Failure():
+                debugPrint("falha aqui")
             }
+
             
         }
         
@@ -37,7 +48,6 @@ class MovieListViewModel: NSObject {
         apiService.downloadImage(path: path) { (response:APIServiceResult<Data>) in
             switch response {
                 case .Success(let imageData):
-                    debugPrint("sucess image")
                     complete(imageData)
                 case .Failure():
                     debugPrint("falaha image")
@@ -45,5 +55,12 @@ class MovieListViewModel: NSObject {
         }
         
     }
+    
+//    func storeMovies(movie:Movie) {
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        let context = appDelegate.persistentContainer.viewContext
+//        let entity = NSEntityDescription.entity(forEntityName: "Movie", in: context)
+//        let newMovie = NSManageObject()
+//    }
     
 }

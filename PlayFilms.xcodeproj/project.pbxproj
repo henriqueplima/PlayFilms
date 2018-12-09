@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		848718AB21BB67FE00454AF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848718AA21BB67FE00454AF3 /* AppDelegate.swift */; };
-		848718AD21BB67FE00454AF3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848718AC21BB67FE00454AF3 /* ViewController.swift */; };
 		848718B021BB67FE00454AF3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848718AE21BB67FE00454AF3 /* Main.storyboard */; };
 		848718B321BB67FE00454AF3 /* PlayFilms.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 848718B121BB67FE00454AF3 /* PlayFilms.xcdatamodeld */; };
 		848718B521BB680100454AF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 848718B421BB680100454AF3 /* Assets.xcassets */; };
@@ -19,6 +18,8 @@
 		848718D521BC089100454AF3 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848718D421BC089100454AF3 /* MovieListViewController.swift */; };
 		848718D721BC0B4200454AF3 /* MovieListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848718D621BC0B4200454AF3 /* MovieListViewModel.swift */; };
 		848718DA21BC167700454AF3 /* MovieCoverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848718D921BC167700454AF3 /* MovieCoverCell.swift */; };
+		848718DD21BCBF4C00454AF3 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848718DC21BCBF4C00454AF3 /* MovieDetailViewController.swift */; };
+		848718DF21BD691800454AF3 /* RefreshControlCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848718DE21BD691800454AF3 /* RefreshControlCustom.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,7 +35,6 @@
 /* Begin PBXFileReference section */
 		848718A721BB67FE00454AF3 /* PlayFilms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlayFilms.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		848718AA21BB67FE00454AF3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		848718AC21BB67FE00454AF3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		848718AF21BB67FE00454AF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		848718B221BB67FE00454AF3 /* PlayFilms.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PlayFilms.xcdatamodel; sourceTree = "<group>"; };
 		848718B421BB680100454AF3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -48,6 +48,8 @@
 		848718D421BC089100454AF3 /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
 		848718D621BC0B4200454AF3 /* MovieListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewModel.swift; sourceTree = "<group>"; };
 		848718D921BC167700454AF3 /* MovieCoverCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCoverCell.swift; sourceTree = "<group>"; };
+		848718DC21BCBF4C00454AF3 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
+		848718DE21BD691800454AF3 /* RefreshControlCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshControlCustom.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,11 +91,11 @@
 		848718A921BB67FE00454AF3 /* PlayFilms */ = {
 			isa = PBXGroup;
 			children = (
+				848718DB21BCBF0100454AF3 /* MovieDetail */,
 				848718D321BC084B00454AF3 /* MovieList */,
 				848718D021BB93CD00454AF3 /* Models */,
 				848718CD21BB71AF00454AF3 /* APIService */,
 				848718AA21BB67FE00454AF3 /* AppDelegate.swift */,
-				848718AC21BB67FE00454AF3 /* ViewController.swift */,
 				848718AE21BB67FE00454AF3 /* Main.storyboard */,
 				848718B421BB680100454AF3 /* Assets.xcassets */,
 				848718B621BB680100454AF3 /* LaunchScreen.storyboard */,
@@ -142,8 +144,17 @@
 			isa = PBXGroup;
 			children = (
 				848718D921BC167700454AF3 /* MovieCoverCell.swift */,
+				848718DE21BD691800454AF3 /* RefreshControlCustom.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		848718DB21BCBF0100454AF3 /* MovieDetail */ = {
+			isa = PBXGroup;
+			children = (
+				848718DC21BCBF4C00454AF3 /* MovieDetailViewController.swift */,
+			);
+			path = MovieDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,13 +258,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				848718AD21BB67FE00454AF3 /* ViewController.swift in Sources */,
 				848718D221BB93FB00454AF3 /* MoviesDataModel.swift in Sources */,
 				848718B321BB67FE00454AF3 /* PlayFilms.xcdatamodeld in Sources */,
 				848718D721BC0B4200454AF3 /* MovieListViewModel.swift in Sources */,
+				848718DF21BD691800454AF3 /* RefreshControlCustom.swift in Sources */,
 				848718D521BC089100454AF3 /* MovieListViewController.swift in Sources */,
 				848718CF21BB71F500454AF3 /* APIService.swift in Sources */,
 				848718DA21BC167700454AF3 /* MovieCoverCell.swift in Sources */,
+				848718DD21BCBF4C00454AF3 /* MovieDetailViewController.swift in Sources */,
 				848718AB21BB67FE00454AF3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

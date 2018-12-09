@@ -18,6 +18,18 @@ import UIKit
         var releaseDate : String
         var coverPath : String
         var coverData : Data?
+        var voteAvarege : Float
+        
+        var getReleaseDataFormat : String {
+            let formatter = DateFormatter()
+            formatter.locale = Locale.current
+            formatter.dateFormat = "yyyy-MM-dd"
+            if let date = formatter.date(from: releaseDate) {
+                formatter.dateFormat = "MMMM dd, yyyy"
+                return formatter.string(from: date)
+            }
+            return "-"
+        }
         
         enum CodingKeys : String, CodingKey {
             case title
@@ -26,6 +38,7 @@ import UIKit
             case releaseDate = "release_date"
             case coverPath = "poster_path"
             case coverData
+            case voteAvarege = "vote_average"
         }
         
     }
@@ -33,6 +46,14 @@ import UIKit
     struct MovieListResponse : Decodable {
         var results : [Movie]
         var name : String
+        var totalPage : Int
+        
+        enum CodingKeys : String, CodingKey {
+            case results
+            case name
+            case totalPage = "total_pages"
+        }
+        
     }
 
 //}
