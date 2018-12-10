@@ -72,46 +72,127 @@
                                             <outlet property="lblTitle" destination="4QJ-JU-QeZ" id="uQy-WB-4CP"/>
                                         </connections>
                                     </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ErrorCell" id="3om-4c-7xi" customClass="ErrorCell" customModule="PlayFilms" customModuleProvider="target">
+                                        <rect key="frame" x="231" y="0.0" width="144" height="126"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="144" height="126"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wfr-8m-H6w">
+                                                    <rect key="frame" x="36" y="75" width="72" height="33"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <state key="normal" title="Try Again"/>
+                                                    <connections>
+                                                        <action selector="doTry:" destination="3om-4c-7xi" eventType="touchUpInside" id="7li-zd-50J"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nXr-1e-OVY">
+                                                    <rect key="frame" x="16" y="36.5" width="112" height="26.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" red="0.97203101199999997" green="1" blue="0.9622654021" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="wfr-8m-H6w" firstAttribute="centerX" secondItem="nXr-1e-OVY" secondAttribute="centerX" id="5bo-bc-Ii0"/>
+                                            <constraint firstItem="wfr-8m-H6w" firstAttribute="top" secondItem="nXr-1e-OVY" secondAttribute="bottom" constant="12" id="Ae0-5l-Bz4"/>
+                                            <constraint firstItem="nXr-1e-OVY" firstAttribute="leading" secondItem="3om-4c-7xi" secondAttribute="leadingMargin" constant="8" id="Q79-bg-x7c"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="wfr-8m-H6w" secondAttribute="bottom" constant="10" id="aaR-9F-srv"/>
+                                            <constraint firstItem="nXr-1e-OVY" firstAttribute="top" relation="lessThanOrEqual" secondItem="3om-4c-7xi" secondAttribute="topMargin" constant="10" id="gAB-X1-brL"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="nXr-1e-OVY" secondAttribute="trailing" constant="8" id="waO-x3-kT2"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="btnAgain" destination="wfr-8m-H6w" id="rD9-iF-OLn"/>
+                                            <outlet property="lblMessage" destination="nXr-1e-OVY" id="NGG-kO-Xjh"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LoadingCell" id="skh-xu-DVB" customClass="LoadingCell" customModule="PlayFilms" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="136" width="144" height="126"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="144" height="126"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Ud5-Wj-6UP">
+                                                    <rect key="frame" x="53.5" y="44.5" width="37" height="37"/>
+                                                    <color key="color" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </activityIndicatorView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="Ud5-Wj-6UP" firstAttribute="centerX" secondItem="skh-xu-DVB" secondAttribute="centerX" id="1jy-uR-5Fh"/>
+                                            <constraint firstItem="Ud5-Wj-6UP" firstAttribute="centerY" secondItem="skh-xu-DVB" secondAttribute="centerY" id="aHz-WR-d6q"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="indicator" destination="Ud5-Wj-6UP" id="sco-9I-LtB"/>
+                                        </connections>
+                                    </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RefreshControlCustom" id="Isn-NG-gwa" customClass="RefreshControlCustom" customModule="PlayFilms" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="126" width="375" height="120"/>
+                                    <rect key="frame" x="0.0" y="262" width="375" height="120"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pull To Refresh" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Wt-0Q-ygL">
-                                            <rect key="frame" x="127.5" y="72" width="120.5" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                            <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="KlW-dC-ogl">
-                                            <rect key="frame" x="169" y="20" width="37" height="37"/>
+                                            <rect key="frame" x="169" y="41.5" width="37" height="37"/>
                                             <color key="color" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </activityIndicatorView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="0Wt-0Q-ygL" firstAttribute="centerX" secondItem="KlW-dC-ogl" secondAttribute="centerX" id="2EC-4A-zzO"/>
-                                        <constraint firstItem="KlW-dC-ogl" firstAttribute="top" secondItem="Isn-NG-gwa" secondAttribute="top" constant="20" id="6oj-PD-ldd"/>
-                                        <constraint firstItem="0Wt-0Q-ygL" firstAttribute="top" secondItem="KlW-dC-ogl" secondAttribute="bottom" constant="15" id="EmD-nb-R3c"/>
-                                        <constraint firstItem="KlW-dC-ogl" firstAttribute="centerX" secondItem="Isn-NG-gwa" secondAttribute="centerX" id="unh-qW-njb"/>
+                                        <constraint firstItem="KlW-dC-ogl" firstAttribute="centerY" secondItem="Isn-NG-gwa" secondAttribute="centerY" id="ZLP-CP-cgD"/>
+                                        <constraint firstItem="KlW-dC-ogl" firstAttribute="centerX" secondItem="Isn-NG-gwa" secondAttribute="centerX" id="zC8-jB-x9q"/>
                                     </constraints>
                                     <connections>
-                                        <outlet property="lblDescription" destination="0Wt-0Q-ygL" id="SAA-kA-0d7"/>
                                         <outlet property="refreshControlIndicator" destination="KlW-dC-ogl" id="2E7-J2-JXG"/>
                                     </connections>
                                 </collectionReusableView>
                             </collectionView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a5z-mD-RfG">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We could not download the data to mount the screen." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0zu-eg-yIp">
+                                        <rect key="frame" x="20" y="92" width="335" height="60"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5M2-IQ-B1X">
+                                        <rect key="frame" x="152.5" y="196" width="70" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="TryAgain"/>
+                                        <connections>
+                                            <action selector="tryAgain:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mCg-R5-vZk"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="0zu-eg-yIp" secondAttribute="trailing" constant="20" id="IWw-4O-bjv"/>
+                                    <constraint firstItem="5M2-IQ-B1X" firstAttribute="centerX" secondItem="0zu-eg-yIp" secondAttribute="centerX" id="emU-lC-1fW"/>
+                                    <constraint firstItem="0zu-eg-yIp" firstAttribute="leading" secondItem="a5z-mD-RfG" secondAttribute="leading" constant="20" id="lpE-P9-SIN"/>
+                                    <constraint firstItem="0zu-eg-yIp" firstAttribute="top" secondItem="a5z-mD-RfG" secondAttribute="top" constant="92" id="mNs-og-csc"/>
+                                    <constraint firstItem="5M2-IQ-B1X" firstAttribute="top" secondItem="0zu-eg-yIp" secondAttribute="bottom" constant="44" id="vfA-Zn-WQt"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Tn0-A7-c8y" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="3mb-HE-1oP"/>
+                            <constraint firstItem="a5z-mD-RfG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="8wm-KZ-s20"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="a5z-mD-RfG" secondAttribute="bottom" id="L3m-Nu-ccx"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Tn0-A7-c8y" secondAttribute="trailing" id="WoZ-2a-BUX"/>
+                            <constraint firstItem="a5z-mD-RfG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Y2e-lf-CzR"/>
                             <constraint firstItem="Tn0-A7-c8y" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bxV-vh-mAi"/>
+                            <constraint firstItem="a5z-mD-RfG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eZy-Hr-6DV"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Tn0-A7-c8y" secondAttribute="bottom" id="uHu-E4-HSY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="Tn0-A7-c8y" id="9QR-iW-nLg"/>
+                        <outlet property="viewError" destination="a5z-mD-RfG" id="K6j-re-EbC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

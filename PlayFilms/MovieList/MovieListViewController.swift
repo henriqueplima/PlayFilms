@@ -15,11 +15,16 @@ class MovieListViewController: UIViewController  {
     var isLoading = true
     var refreshFooter : RefreshControlCustom?
     let footerViewReuseIdentifier = "RefreshControlCustom"
+    
+    @IBOutlet weak var viewError: UIView!
+    
     var moviesList : [Movie] = [] {
         didSet{
-            self.collectionView.reloadData()
-            self.isLoading = false
-            refreshControl.endRefreshing()
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+                self.refreshControl.endRefreshing()
+            }
+            
         }
     }
     
@@ -57,9 +62,31 @@ class MovieListViewController: UIViewController  {
     }
     
     func fetchMovies(){
-        self.viewModel.fetchMovies { (response) in
-            DispatchQueue.main.async { self.moviesList.append(contentsOf: response) }
+        
+        self.viewModel.fetchMovies { (list, error) in
+            
+            DispatchQueue.main.async {
+                
+                if (list.count > 0 && error == nil){
+                    self.moviesList.append(contentsOf: list)
+                } else if list.count > 0,let newError = error {
+                    self.moviesList = list
+                    self.showAlert(error: newError)
+                    // errorView
+                } else{
+                    self.viewError.isHidden = false
+                }
+                self.isLoading = false
+            }
+        
         }
+    }
+    
+    func showAlert(error:ErrorHandler){
+        let alert = MessageAlert.loadNib()
+        alert.lblMessage.text = error.localizedDescription
+        alert.config(parent: self.view)
+        self.view.layoutIfNeeded()
     }
     
     func movieSelected(at indexPath:IndexPath) {
@@ -70,20 +97,13 @@ class MovieListViewController: UIViewController  {
         
     }
     
-    // MARK - CollectionView DataSource
     
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func tryAgain(_ sender: Any) {
+        self.collectionView.reloadData()
+        self.viewError.isHidden = true
+        self.fetchMovies()
     }
-    */
-
+    
 }
 
 extension MovieListViewController:UIScrollViewDelegate{
@@ -96,12 +116,11 @@ extension MovieListViewController:UIScrollViewDelegate{
         let frameHeight = scrollView.bounds.size.height;
         var triggerThreshold  = Float((diffHeight - frameHeight))/Float(threshold);
         triggerThreshold   =  min(triggerThreshold, 0.0)
-        let pullRatio  = min(Swift.abs(triggerThreshold), 1.0) //min(fabs(triggerThreshold),1.0);
+        let pullRatio  = min(Swift.abs(triggerThreshold), 1.0)
         self.refreshFooter?.setTransform(inTransform: CGAffineTransform.identity, scaleFactor: CGFloat(pullRatio))
         if pullRatio >= 1 {
             self.refreshFooter?.animateFinal()
         }
-        print("pullRation:\(pullRatio)")
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -110,21 +129,16 @@ extension MovieListViewController:UIScrollViewDelegate{
         let contentHeight = scrollView.contentSize.height;
         let diffHeight = contentHeight - contentOffset;
         let frameHeight = scrollView.bounds.size.height;
-        let pullHeight  = Swift.abs(diffHeight - frameHeight) //fabs(diffHeight - frameHeight);
-        print("pullHeight:\(pullHeight)");
+        let pullHeight  = Swift.abs(diffHeight - frameHeight)
         if pullHeight == 0.0
         {
             
-            print("chamou aqui");
             if (self.refreshFooter?.isAnimatingFinal)! {
-                print("load more trigger")
                 self.isLoading = true
                 self.refreshFooter?.startAnimate()
                 fetchMovies()
             }
         }
-        
-        
         
     }
 }
@@ -132,15 +146,21 @@ extension MovieListViewController:UIScrollViewDelegate{
 extension MovieListViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.moviesList.count
+        return self.moviesList.count > 0 ? self.moviesList.count : 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        if (self.moviesList.count == 0) {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LoadingCell", for: indexPath)
+            return cell
+        }
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCoverCell.reuseIdentifier, for: indexPath) as! MovieCoverCell
         let movie = self.moviesList[indexPath.row]
         cell.setMovie(movie)
         if movie.coverData == nil {
-            self.viewModel.downloadCoverMovie(path: movie.coverPath) { (data) in
+            self.viewModel.downloadCoverMovie(path: movie.coverPath, idMovie:movie.id) { (data) in
                 DispatchQueue.main.async {
                     self.moviesList[indexPath.row].coverData = data
                     cell.setMovie(self.moviesList[indexPath.row])
@@ -173,6 +193,11 @@ extension MovieListViewController : UICollectionViewDelegate, UICollectionViewDa
     // MARK - UICollectionViewDelegateFlowLayout
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        if self.moviesList.count == 0 {
+            return CGSize(width: 60, height: 60)
+        }
+        
         let width = collectionView.bounds.size.width - 30
         return MovieCoverCell.size(for: width)
     }
@@ -182,6 +207,16 @@ extension MovieListViewController : UICollectionViewDelegate, UICollectionViewDa
             return CGSize.zero
         }
         return CGSize(width: collectionView.bounds.size.width, height: 126)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        if self.moviesList.count == 0 {
+            let left = (self.collectionView.frame.width / 2) - 44
+             return UIEdgeInsets(top: 10.0, left: left, bottom: 10.0, right: 0.0)
+        }
+        
+        return UIEdgeInsets(top: 10.0, left: 5.0, bottom: 10.0, right: 5.0)
     }
     
 }

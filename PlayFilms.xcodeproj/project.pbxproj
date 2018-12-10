@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8412D2A021BE2D97001E1522 /* ErrorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8412D29F21BE2D97001E1522 /* ErrorCell.swift */; };
 		848718AB21BB67FE00454AF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848718AA21BB67FE00454AF3 /* AppDelegate.swift */; };
 		848718B021BB67FE00454AF3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848718AE21BB67FE00454AF3 /* Main.storyboard */; };
 		848718B321BB67FE00454AF3 /* PlayFilms.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 848718B121BB67FE00454AF3 /* PlayFilms.xcdatamodeld */; };
@@ -24,6 +25,10 @@
 		84C2E51721BDB0E10080FA97 /* MovieStore+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C2E51521BDB0E10080FA97 /* MovieStore+CoreDataProperties.swift */; };
 		84C2E51A21BDB4B70080FA97 /* Synchronizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C2E51921BDB4B70080FA97 /* Synchronizer.swift */; };
 		84C2E51C21BDC5400080FA97 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C2E51B21BDC5400080FA97 /* ErrorHandler.swift */; };
+		84C2E51E21BDF8FA0080FA97 /* CheckNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C2E51D21BDF8FA0080FA97 /* CheckNetwork.swift */; };
+		84C2E52021BE07460080FA97 /* MessageAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C2E51F21BE07460080FA97 /* MessageAlert.swift */; };
+		84C2E52221BE07690080FA97 /* MessageAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C2E52121BE07690080FA97 /* MessageAlert.xib */; };
+		84C2E52421BE25940080FA97 /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C2E52321BE25940080FA97 /* LoadingCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8412D29F21BE2D97001E1522 /* ErrorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCell.swift; sourceTree = "<group>"; };
 		848718A721BB67FE00454AF3 /* PlayFilms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlayFilms.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		848718AA21BB67FE00454AF3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		848718AF21BB67FE00454AF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -58,6 +64,10 @@
 		84C2E51521BDB0E10080FA97 /* MovieStore+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieStore+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		84C2E51921BDB4B70080FA97 /* Synchronizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Synchronizer.swift; sourceTree = "<group>"; };
 		84C2E51B21BDC5400080FA97 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
+		84C2E51D21BDF8FA0080FA97 /* CheckNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNetwork.swift; sourceTree = "<group>"; };
+		84C2E51F21BE07460080FA97 /* MessageAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageAlert.swift; sourceTree = "<group>"; };
+		84C2E52121BE07690080FA97 /* MessageAlert.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageAlert.xib; sourceTree = "<group>"; };
+		84C2E52321BE25940080FA97 /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +121,7 @@
 				848718B621BB680100454AF3 /* LaunchScreen.storyboard */,
 				848718B921BB680100454AF3 /* Info.plist */,
 				848718B121BB67FE00454AF3 /* PlayFilms.xcdatamodeld */,
+				84C2E51D21BDF8FA0080FA97 /* CheckNetwork.swift */,
 			);
 			path = PlayFilms;
 			sourceTree = "<group>";
@@ -156,6 +167,10 @@
 			children = (
 				848718D921BC167700454AF3 /* MovieCoverCell.swift */,
 				848718DE21BD691800454AF3 /* RefreshControlCustom.swift */,
+				84C2E51F21BE07460080FA97 /* MessageAlert.swift */,
+				84C2E52121BE07690080FA97 /* MessageAlert.xib */,
+				84C2E52321BE25940080FA97 /* LoadingCell.swift */,
+				8412D29F21BE2D97001E1522 /* ErrorCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -268,6 +283,7 @@
 			files = (
 				848718B821BB680100454AF3 /* LaunchScreen.storyboard in Resources */,
 				848718B521BB680100454AF3 /* Assets.xcassets in Resources */,
+				84C2E52221BE07690080FA97 /* MessageAlert.xib in Resources */,
 				848718B021BB67FE00454AF3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,11 +305,15 @@
 				848718D221BB93FB00454AF3 /* MoviesDataModel.swift in Sources */,
 				848718B321BB67FE00454AF3 /* PlayFilms.xcdatamodeld in Sources */,
 				848718D721BC0B4200454AF3 /* MovieListViewModel.swift in Sources */,
+				84C2E52021BE07460080FA97 /* MessageAlert.swift in Sources */,
 				848718DF21BD691800454AF3 /* RefreshControlCustom.swift in Sources */,
 				848718D521BC089100454AF3 /* MovieListViewController.swift in Sources */,
+				8412D2A021BE2D97001E1522 /* ErrorCell.swift in Sources */,
 				84C2E51C21BDC5400080FA97 /* ErrorHandler.swift in Sources */,
 				848718CF21BB71F500454AF3 /* APIService.swift in Sources */,
+				84C2E51E21BDF8FA0080FA97 /* CheckNetwork.swift in Sources */,
 				84C2E51621BDB0E10080FA97 /* MovieStore+CoreDataClass.swift in Sources */,
+				84C2E52421BE25940080FA97 /* LoadingCell.swift in Sources */,
 				848718DA21BC167700454AF3 /* MovieCoverCell.swift in Sources */,
 				848718DD21BCBF4C00454AF3 /* MovieDetailViewController.swift in Sources */,
 				84C2E51721BDB0E10080FA97 /* MovieStore+CoreDataProperties.swift in Sources */,

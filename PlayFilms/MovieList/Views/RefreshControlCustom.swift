@@ -11,14 +11,12 @@ import UIKit
 class RefreshControlCustom: UICollectionReusableView {
     
     @IBOutlet weak var refreshControlIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var lblDescription : UILabel!
     
     var isAnimatingFinal:Bool = false
     var currentTransform:CGAffineTransform?
     
     override func awakeFromNib() {
         self.prepareInitialAnimation()
-        debugPrint("chamou awake refresh")
     }
     
     override func layoutSubviews() {
@@ -43,13 +41,11 @@ class RefreshControlCustom: UICollectionReusableView {
     func startAnimate() {
         self.isAnimatingFinal = true
         self.refreshControlIndicator?.startAnimating()
-        self.lblDescription.isHidden = false
     }
     
     func stopAnimate() {
         self.isAnimatingFinal = false
         self.refreshControlIndicator?.stopAnimating()
-        self.lblDescription.isHidden = true
     }
     
     //final animation to display loading

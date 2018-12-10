@@ -25,7 +25,7 @@ public class MovieStore: NSManagedObject {
         
         self.title = movie.title
         self.coverPath = movie.coverPath
-        //self.coverData = movie.coverData as! NSData
+        self.coverData = movie.coverData as NSData?
         self.voteCoverage = movie.voteAvarege
         self.releaseDate = movie.releaseDate
         self.overview = movie.overview

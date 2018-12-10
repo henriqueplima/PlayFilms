@@ -12,15 +12,18 @@ enum ErrorHandler : Error {
     case serviceConnection
     case parseResponse
     case fetchCoreData
+    case noData
     
     var localizedDescription: String {
         switch self {
             case .serviceConnection:
-                return "We could not fetch the data. Check your connection"
+                return "We could not fetch the data. Check your connection !!!"
             case .parseResponse:
                 return "error in parse of response object"
             case .fetchCoreData:
                 return "Erro fetching data"
+            case .noData:
+                return "We could not download the data to mount the screen."
         }
        
         
