@@ -1,0 +1,6 @@
+framework module Pods_PlayFilms {
+  umbrella header "Pods-PlayFilms-umbrella.h"
+
+  export *
+  module * { export * }
+}

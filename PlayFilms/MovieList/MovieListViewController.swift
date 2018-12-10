@@ -22,38 +22,20 @@ class MovieListViewController: UIViewController  {
         didSet{
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
-                self.refreshControl.endRefreshing()
+
             }
             
         }
     }
     
-    lazy var refreshControl: UIRefreshControl = {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action:
-            #selector(handleRefresh(_:)),
-                                 for: UIControl.Event.valueChanged)
-        refreshControl.tintColor = UIColor.red
-        var attribute =  [NSAttributedString.Key.foregroundColor : UIColor.red]
-        var attributedString = NSAttributedString(string: "Pull to refresh", attributes: attribute) //NSMutableAttributedString(string: "Pull to refresh")
-        refreshControl.attributedTitle = attributedString
-        
-        return refreshControl
-    }()
-    
-    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
-        
-       fetchMovies()
-        
-    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
-        //self.collectionView.addSubview(self.refreshControl)
-        self.collectionView.refreshControl = refreshControl
+        
         
         fetchMovies()
         

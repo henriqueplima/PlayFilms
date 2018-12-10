@@ -16,7 +16,6 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var lblAvarage: UILabel!
     @IBOutlet weak var lblReleaseDate: UILabel!
     @IBOutlet weak var lblOverview: UILabel!
-    var seila : MessageAlert?
     
     override func viewDidLoad() {
         super.viewDidLoad()
